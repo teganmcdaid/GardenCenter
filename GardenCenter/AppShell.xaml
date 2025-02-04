@@ -4,12 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:GardenCenter"
+    xmlns:views="clr-namespace:GardenCenter.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="GardenCenter">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent Title="Login" ContentTemplate="{DataTemplate views:LoginPage}" Route="LoginPage" />
+    <ShellContent Title="Home" ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage" />
+    <ShellContent Title="Home" ContentTemplate="{DataTemplate views:AdminPage}" Route="AdminPage" />
 
 </Shell>

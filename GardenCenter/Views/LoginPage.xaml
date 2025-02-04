@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:GardenCenter.ViewModels"
+             x:Class="GardenCenter.Views.LoginPage"
+             Title="LoginPage">
+
+    <ContentPage.BindingContext>
+        <viewmodels:LoginViewModel />
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout Padding="20"
+                         Spacing="10">
+        <Label Text="Login to Garden Center"
+               FontSize="24"
+               HorizontalOptions="Center"/>
+        <Entry Placeholder="Username"
+               Text="{Binding Username}"/>
+        <Entry Placeholder="Email Address"
+               Text="{Binding EmailAddress}"/>
+
+        <Button Text="Login"
+                Command="{Binding LoginCommand}"
+                BackgroundColor="Green"
+                TextColor="White"/>
+
+
+    </VerticalStackLayout>
+</ContentPage>
