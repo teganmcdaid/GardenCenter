@@ -1,45 +1,45 @@
 [
       {
-        "name": "Garden Shovel",
-        "price": 15.99,
-        "description": "A durable garden shovel for digging and planting.",
+        "Name": "Garden Shovel",
+        "Price": 15.99,
+        "Description": "A durable garden shovel for digging and planting.",
         "category": "Tools",
-        "image": "https://github.com/teganmcdaid/GardenCenter/blob/master/shovel.jpg?raw=true"
+        "Image": "https://github.com/teganmcdaid/GardenCenter/blob/master/shovel.jpg?raw=true"
       },
       {
-        "name": "Pruning Shears",
-        "price": 12.50,
-        "description": "Sharp pruning shears for trimming plants and bushes.",
-        "category": "Tools",
-        "image": "https://github.com/teganmcdaid/GardenCenter/blob/master/pruning.jpg?raw=true"
+        "Name": "Pruning Shears",
+        "Price": 12.50,
+        "Description": "Sharp pruning shears for trimming plants and bushes.",
+        "Category": "Tools",
+        "Image": "https://github.com/teganmcdaid/GardenCenter/blob/master/pruning.jpg?raw=true"
       },
       {
-        "name": "Organic Compost",
-        "price": 9.99,
-        "description": "High-quality organic compost to enrich your soil.",
-        "category": "Garden Care",
-        "image": "https://github.com/teganmcdaid/GardenCenter/blob/master/compost.jpg?raw=true"
+        "Name": "Organic Compost",
+        "Price": 9.99,
+        "Description": "High-quality organic compost to enrich your soil.",
+        "Category": "Garden Care",
+        "Image": "https://github.com/teganmcdaid/GardenCenter/blob/master/compost.jpg?raw=true"
       },
       {
-        "name": "Liquid Fertilizer",
-        "price": 14.25,
-        "description": "Nutrient-rich liquid fertilizer for healthy plant growth.",
-        "category": "Garden Care",
-        "image": "https://github.com/teganmcdaid/GardenCenter/blob/master/fertilizer.jpg?raw=true"
+        "Name": "Liquid Fertilizer",
+        "Price": 14.25,
+        "Description": "Nutrient-rich liquid fertilizer for healthy plant growth.",
+        "Category": "Garden Care",
+        "Image": "https://github.com/teganmcdaid/GardenCenter/blob/master/fertilizer.jpg?raw=true"
       },
       {
-        "name": "Rose Bush",
-        "price": 25.00,
-        "description": "Beautiful blooming rose bush for your garden.",
-        "category": "Plants",
-        "image": "https://github.com/teganmcdaid/GardenCenter/blob/master/rosebush.jpg?raw=true"
+        "Name": "Rose Bush",
+        "Price": 25.00,
+        "Description": "Beautiful blooming rose bush for your garden.",
+        "Category": "Plants",
+        "Image": "https://github.com/teganmcdaid/GardenCenter/blob/master/rosebush.jpg?raw=true"
       },
       {
-        "name": "Tomato Plant",
-        "price": 5.99,
-        "description": "Healthy tomato plant ready for home gardening.",
-        "category": "Plants",
-        "image": "https://github.com/teganmcdaid/GardenCenter/blob/master/tomato.jpg?raw=true"
+        "Name": "Tomato Plant",
+        "Price": 5.99,
+        "Description": "Healthy tomato plant ready for home gardening.",
+        "Category": "Plants",
+        "Image": "https://github.com/teganmcdaid/GardenCenter/blob/master/tomato.jpg?raw=true"
       }
 ]
   
