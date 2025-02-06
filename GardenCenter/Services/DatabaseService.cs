@@ -10,25 +10,42 @@ public class DatabaseService
     public DatabaseService(string dbPath)
     {
         conn = new SQLiteAsyncConnection(dbPath);
-        conn.CreateTableAsync<Products>().Wait();
+
+        //create table for both user and products
+        conn.CreateTableAsync<User>().Wait();
+        //conn.CreateTableAsync<Products>().Wait();
     }
 
-    public Task<List<Products>> GetProductsAsync()
+    //User Methods
+    //////////////////////////////////////
+    public Task<List<User>> GetUserAsync()
     {
-        return conn.Table<Products>().ToListAsync();
+        return conn.Table<User>().ToListAsync();
     }
 
-    public Task<int> SaveProductAsync(Products product)
+    public Task<int> SaveUserAsync(User user)
     {
-        return conn.InsertAsync(product);
+        return conn.InsertAsync(user);
     }
 
-    public Task<int> UpdateProductAsync(Products product)
-    {
-        return conn.UpdateAsync(product);
-    }
-    public Task<int> DeleteProductAsync(Products product)
-    {
-        return conn.DeleteAsync(product);
-    }
+    //Product methods
+    //////////////////////////////////////
+    //public Task<List<Products>> GetProductsAsync()
+    //{
+    //    return conn.Table<Products>().ToListAsync();
+    //}
+
+    //public Task<int> SaveProductAsync(Products product)
+    //{
+    //    return conn.InsertAsync(product);
+    //}
+
+    //public Task<int> UpdateProductAsync(Products product)
+    //{
+    //    return conn.UpdateAsync(product);
+    //}
+    //public Task<int> DeleteProductAsync(Products product)
+    //{
+    //    return conn.DeleteAsync(product);
+    //}
 }

@@ -2,19 +2,19 @@ using GardenCenter.ViewModels;
 
 namespace GardenCenter.Views;
 
-public partial class LoginPage : ContentPage
+public partial class SignUp : ContentPage
 {
-	public LoginPage()
+	public SignUp()
 	{
 		InitializeComponent();
-        BindingContext = new LoginViewModel();
+        BindingContext = new SignUpViewModel();
     }
 
     //used to clear the fields when page is first opened
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        if (BindingContext is LoginViewModel viewModel)
+        if (BindingContext is SignUpViewModel viewModel)
         {
             viewModel.ClearFields();
         }

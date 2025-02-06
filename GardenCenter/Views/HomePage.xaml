@@ -3,10 +3,81 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GardenCenter.Views.HomePage"
              Title="HomePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Main Page"
-            FontSize="24"
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    
+    
+    
+    <StackLayout Padding="30">
+
+        <!-- Heading with a background colour of green -->
+        <Frame BackgroundColor="{StaticResource Primary}"
+         HeightRequest="120"
+         HorizontalOptions="FillAndExpand">
+            <StackLayout>
+
+                <Label Text="Welcome to Garden Center"
+               FontSize="30"
+               HorizontalOptions="Center"
+               TextColor="White"/>
+        <Label Text="Please Select a Category"
+               FontSize="22"
+               HorizontalOptions="Center"/>
+            </StackLayout>
+        </Frame>
+
+        <Grid ColumnSpacing="20" 
+              RowSpacing="20"
+              RowDefinitions="Auto"
+              ColumnDefinitions="*,*,*"
+              Padding="20">
+            
+
+            <!-- Plants Image with tap gesture  -->
+            <Frame Grid.Column="0" BorderColor="Black" CornerRadius="10">
+                <StackLayout>
+                    <Image Source="plant.jpg" HeightRequest="150">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetPlantsCommand}" CommandParameter="Plants"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="Plants" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <!-- Tools image with tap gesture -->
+            <Frame Grid.Column="1" BorderColor="Black" CornerRadius="10">
+                <StackLayout>
+                    <Image Source="tool.jpg" HeightRequest="150">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetToolsCommand}"
+                                                  CommandParameter="Tools"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="Tools" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <!-- Care image with tap getsure -->
+            <Frame Grid.Column="2" BorderColor="Black" CornerRadius="10">
+                <StackLayout>
+                    <Image Source="care.jpg" HeightRequest="150">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetGardenCareCommand}" 
+                                                  CommandParameter="Garden Care"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="Garden Care" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <!-- Add this when button is being clicked so that user knows its loading-->
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                    IsRunning="{Binding IsBusy}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Grid.ColumnSpan="3">
+
+            </ActivityIndicator>
+            
+        </Grid>
+    </StackLayout>
 </ContentPage>

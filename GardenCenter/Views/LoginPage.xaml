@@ -14,16 +14,43 @@
         <Label Text="Login to Garden Center"
                FontSize="24"
                HorizontalOptions="Center"/>
-        <Entry Placeholder="Username"
-               Text="{Binding Username}"/>
-        <Entry Placeholder="Email Address"
-               Text="{Binding EmailAddress}"/>
+        <Grid ColumnDefinitions="*,10,250,10,*"
+              RowDefinitions="*,*,*">
+            
+            <Border StrokeShape="RoundRectangle 80"
+                    Stroke="{StaticResource Primary}"
+                    StrokeThickness="6"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Margin="10">
+                <Image Source="flowers.jpg"/>
+            </Border>
+            <VerticalStackLayout Grid.Column="2"
+                                 Grid.Row="1">
+                <Entry Placeholder="Username"
+                       Text="{Binding Username}"/>
+                <Entry Placeholder="Phone Number"
+                       Text="{Binding PhoneNumber}"/>
+            </VerticalStackLayout>
 
-        <Button Text="Login"
-                Command="{Binding LoginCommand}"
-                BackgroundColor="Green"
-                TextColor="White"/>
+            <HorizontalStackLayout Grid.Column="2"
+                                   Grid.Row="2"
+                                   HorizontalOptions="Center"
+                                   >
+                <Button Text="Login"
+                        Command="{Binding LoginCommand}"
+                        BackgroundColor="Green"
+                        TextColor="White"
+                        Margin="15"
+                        WidthRequest="90"/>
 
-
+                <Button Text="Sign Up"
+                        Command="{Binding SignUpCommand}"
+                        BackgroundColor="Yellow"
+                        TextColor="Black"
+                        Margin="15"
+                        WidthRequest="90"/>
+            </HorizontalStackLayout>
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>

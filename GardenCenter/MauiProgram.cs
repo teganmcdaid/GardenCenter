@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GardenCenter.Services;
+using GardenCenter.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace GardenCenter
 {
@@ -15,9 +17,11 @@ namespace GardenCenter
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+            builder.Services.AddSingleton<ProductService>();
+            builder.Services.AddSingleton<LoginViewModel>();
+            builder.Services.AddSingleton<SignUpViewModel>();
+            builder.Services.AddTransient<ProductsViewModel>();
+
 
             return builder.Build();
         }

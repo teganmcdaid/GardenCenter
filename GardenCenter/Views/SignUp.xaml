@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:GardenCenter.ViewModels"
+             x:Class="GardenCenter.Views.SignUp"
+             Title="SignUp">
+    
+    <ContentPage.BindingContext>
+        <viewmodels:SignUpViewModel/>
+    </ContentPage.BindingContext>
+    
+      <VerticalStackLayout Padding="20"
+                             Spacing="10">
+            <Label Text="Sign Up to Garden Center"
+                   FontSize="24"
+                   HorizontalOptions="Center"/>
+            
+            <Grid ColumnDefinitions="*,10,250,10,*"
+                  RowDefinitions="*,*,*,*">
+
+                <Border StrokeShape="RoundRectangle 80"
+                        Stroke="{StaticResource Primary}"
+                        StrokeThickness="6"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Margin="10">
+                    <Image Source="flowers.jpg"/>
+                </Border>
+                
+                <VerticalStackLayout Grid.Column="2"
+                                     Grid.Row="1">
+                    <Entry Placeholder="Username"
+                           Text="{Binding Username}"/>
+                
+                    <Entry Placeholder="Phone Number"
+                           Text="{Binding PhoneNumber}"/>
+                </VerticalStackLayout>
+                
+                <HorizontalStackLayout Grid.Column="2"
+                                       Grid.Row="2"
+                                       HorizontalOptions="Center">
+                    <Label Text="Is Corporate"
+                           VerticalOptions="Center"/>
+                    <CheckBox IsChecked="{Binding IsCorporate}"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Grid.Column="2"
+                                       Grid.Row="3"
+                                       HorizontalOptions="Center">
+                    <Button Text="Sign Up"
+                            Command="{Binding SignUpCommand}"
+                            BackgroundColor="Green"
+                            TextColor="White"
+                            Margin="15" 
+                            WidthRequest="90"/>
+        
+                    <Button Text="Cancel"
+                            Command="{Binding CancelCommand}"
+                            BackgroundColor="Red"
+                            TextColor="Black"
+                            Margin="15"
+                            WidthRequest="90"/>
+                </HorizontalStackLayout>
+
+            </Grid>
+    </VerticalStackLayout>
+</ContentPage>

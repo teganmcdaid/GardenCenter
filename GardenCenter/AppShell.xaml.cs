@@ -8,6 +8,7 @@ namespace GardenCenter
         {
             InitializeComponent();
 
+            Routing.RegisterRoute(nameof(ProductsPage), typeof(ProductsPage));
         }
     }
 }
