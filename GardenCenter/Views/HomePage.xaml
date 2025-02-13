@@ -14,7 +14,7 @@
          HorizontalOptions="FillAndExpand">
             <StackLayout>
 
-                <Label Text="Welcome to Garden Center"
+                <Label Text="Welcome to Garden Center" 
                FontSize="30"
                HorizontalOptions="Center"
                TextColor="White"/>

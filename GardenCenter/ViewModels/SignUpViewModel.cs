@@ -6,7 +6,7 @@ using System.Net.Mail;
 
 namespace GardenCenter.ViewModels;
 
-public partial class SignUpViewModel : ObservableObject
+public partial class SignUpViewModel : BaseViewModel
 {
     [ObservableProperty]
     private string username;
@@ -35,16 +35,17 @@ public partial class SignUpViewModel : ObservableObject
         var users = await App.Database.GetUserAsync();
         foreach (var u in users)
         {
-            Debug.WriteLine($"ID: {u.Name}, Username: {u.PhoneNumber}, Email: {u.IsCorporate}");
+            //print each user
+            //Debug.WriteLine($"Username: {u.Name}, PhoneNumber: {u.PhoneNumber}, Corporate: {u.IsCorporate}");
 
             if (user.PhoneNumber == u.PhoneNumber)
             {
                 await App.Current.MainPage.DisplayAlert("Error", "This Phone Number Already Has an Account", "OK");
                 return;
             }
-            else
-            {
-                await App.Current.MainPage.DisplayAlert("Success", "You have successfully signed up.", "OK");
+        }
+            
+        await App.Current.MainPage.DisplayAlert("Success", "You have successfully signed up.", "OK");
 
                 try
                 {
@@ -61,9 +62,8 @@ public partial class SignUpViewModel : ObservableObject
                 {
                     await App.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
                 }
-            }
-        }
-    }
+     }
+        
     [RelayCommand]
     async Task CancelAsync()
     {

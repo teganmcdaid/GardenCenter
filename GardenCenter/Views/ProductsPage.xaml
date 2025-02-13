@@ -1,35 +1,68 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:GardenCenter.ViewModels"
              x:Class="GardenCenter.Views.ProductsPage"
              Title="{Binding Products[1].Category}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Basket"
+                 IconImageSource="basket.png"
+                 Order="Primary"
+                 Priority="0"
+                 Command="{Binding GoToBasketCommand}" />
+    </ContentPage.ToolbarItems>
     <ScrollView>
         <StackLayout Padding="10">
-        <CollectionView ItemsSource="{Binding Products}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10">
-                        <Grid ColumnDefinitions="*,150,*,*">
-                            
-                                    <Image HeightRequest="100"
+            <CollectionView ItemsSource="{Binding Products}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Grid ColumnDefinitions="50,150,*,*">
+                                <!--Display the images with name, description and price to the right -->
+                                <Image HeightRequest="100"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"
                                    Source="{Binding Image}"
                                    Grid.Column="1"/>
-                            <VerticalStackLayout Grid.Column="2">
-                                <Label Text="{Binding Name}" FontSize="20" />
-                        
-                            <Label Text="{Binding Description}" FontSize="14" />
-                            <Label Text="{Binding Price, StringFormat='Price: {0:c}'}" FontSize="14" />
-                            
-                            </VerticalStackLayout>
-                                
-                        </Grid>
-                        
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>
+
+                                <VerticalStackLayout Grid.Column="2">
+                                    <Label Text="{Binding Name}" FontSize="20" />
+                                    <Label Text="{Binding Description}" FontSize="14" />
+                                    <Label Text="{Binding Price, StringFormat='Price: {0:c}'}" FontSize="14" />
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Column="3"
+                                                     HorizontalOptions="Start">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Quantity: " 
+                                            VerticalOptions="Center"/>
+                                        <!-- add stepper so quantity being added can be changed -->
+                                        <Stepper x:Name="_stepper"
+                                              Minimum="0" 
+                                              Maximum="99" 
+                                              Value="{Binding Quantity, Mode=TwoWay}"
+                                              Increment="1"/>
+                                        <!-- bind label so it represents the quantity of the stepper -->
+                                        <Label Text ="{Binding Source={x:Reference _stepper}, Path=Value}" 
+                                               VerticalOptions="Center"/>
+                                            <!--="{Binding Source={x:Reference _stepper}, Path=Value}" -->
+                                    </StackLayout>
+
+                                    <!-- button to add the basket-->
+                                    <Button Text="Add to Basket"
+                                         
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ProductsViewModel}},
+                                                        Path=AddToBasketCommand}"
+                                            CommandParameter="{Binding .}"
+                                             WidthRequest="120"/>
+
+                                </VerticalStackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
     </ScrollView>
 </ContentPage>

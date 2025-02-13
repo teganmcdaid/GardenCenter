@@ -4,7 +4,7 @@ using GardenCenter.Model;
 
 namespace GardenCenter.ViewModels;
 
-public partial class LoginViewModel : ObservableObject
+public partial class LoginViewModel : BaseViewModel
 {
     [ObservableProperty]
     private string username;
@@ -42,12 +42,19 @@ public partial class LoginViewModel : ObservableObject
 
                 try
                 {
+
                     //navigate to HomePage
                     await Shell.Current.GoToAsync($"///HomePage", true,
                                                     new Dictionary<string, object>
                                                     {
                                                 { "User", user }
                                                     });
+                    //clear prefrences incase previosuly set
+                    Preferences.Default.Clear();
+                    //set preferences so user will be accessible
+                    Preferences.Default.Set("PhoneNumber", user.PhoneNumber);
+                    Preferences.Default.Set("Username", user.Name);
+                    Preferences.Default.Set("IsCorporate", user.IsCorporate);
                 }
                 catch (Exception ex)
                 {

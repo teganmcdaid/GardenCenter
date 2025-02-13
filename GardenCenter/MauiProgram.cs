@@ -21,6 +21,7 @@ namespace GardenCenter
             builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<SignUpViewModel>();
             builder.Services.AddTransient<ProductsViewModel>();
+            
 
 
             return builder.Build();

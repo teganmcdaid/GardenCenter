@@ -5,15 +5,15 @@ namespace GardenCenter.Services;
 
 public class DatabaseService
 {
-        private readonly SQLiteAsyncConnection conn;
+    private readonly SQLiteAsyncConnection conn;
 
     public DatabaseService(string dbPath)
     {
         conn = new SQLiteAsyncConnection(dbPath);
 
-        //create table for both user and products
+        //create table for both user and basket items
         conn.CreateTableAsync<User>().Wait();
-        //conn.CreateTableAsync<Products>().Wait();
+        conn.CreateTableAsync<BasketItem>().Wait();
     }
 
     //User Methods
@@ -27,7 +27,41 @@ public class DatabaseService
     {
         return conn.InsertAsync(user);
     }
+    public Task<int> DeleteAllUsersAsync()
+    {
+        return conn.ExecuteAsync("DELETE FROM User");
+    }
 
+    //Basket Methods
+    //////////////////////////////////////
+
+    //Get the basket based of the users unique phone number
+    public Task<List<BasketItem>> GetUserBasketAsync(string number)
+    {
+        return conn.Table<BasketItem>().Where(i => i.PhoneNumber == number).ToListAsync();
+    }
+    public Task<int> AddToBasketAsync(BasketItem item)
+    {
+        return conn.InsertAsync(item);
+    }
+
+    public Task<int> RemoveFromBasketAsync(int itemId)
+    {
+        return conn.DeleteAsync<BasketItem>(itemId);
+    }
+
+    public Task<int> ClearBasketAsync(string number)
+    {
+        return conn.ExecuteAsync("DELETE FROM BasketItem WHERE PhoneNumber = ?", number);
+    }
+
+    public Task<int> UpdateBasketItemAsync(BasketItem item)
+    {
+        return conn.UpdateAsync(item);
+    }
+
+    //decided to use json file for products instead of database
+    //if extra time at the end will incorporate database
     //Product methods
     //////////////////////////////////////
     //public Task<List<Products>> GetProductsAsync()

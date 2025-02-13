@@ -22,6 +22,8 @@ public partial class HomePageViewModel: BaseViewModel
     {
         this.productService = productService;
     }
+    public string currentUserNumber = Preferences.Get("PhoneNumber", "Unknown");
+    public string currentUserName = Preferences.Get("Username", "Unknown");
 
     //navigating to the prodcut page
     [RelayCommand]
@@ -39,20 +41,13 @@ public partial class HomePageViewModel: BaseViewModel
         //check number of products being passed through
         Debug.WriteLine($"Navigating to ProductsPage with {products.Count} products.");
 
-        //wont navigate with shell alone add nav parameter to see if works
+        //go to products page and pass through products
         var navigationParameter = new Dictionary<string, object>
-    {
-        { "ProductsViewModel", viewModel }
-    };
+        {
+            { "ProductsViewModel", viewModel }
+        };
 
         await Shell.Current.GoToAsync(nameof(ProductsPage), navigationParameter);
-    
-    //go to products page and pass through products
-    //await Shell.Current.GoToAsync($"//{nameof(ProductsPage)}", true,
-    //        new Dictionary<string, object>
-    //        {
-    //            {"ProductsViewModel", viewModel}
-    //        });
     }
 
 

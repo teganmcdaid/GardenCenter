@@ -53,14 +53,14 @@
                             TextColor="White"
                             Margin="15" 
                             WidthRequest="90"/>
-        
-                    <Button Text="Cancel"
+
+                <Button Text="Cancel"
                             Command="{Binding CancelCommand}"
                             BackgroundColor="Red"
                             TextColor="Black"
                             Margin="15"
                             WidthRequest="90"/>
-                </HorizontalStackLayout>
+            </HorizontalStackLayout>
 
             </Grid>
     </VerticalStackLayout>

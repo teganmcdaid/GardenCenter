@@ -1,10 +1,14 @@
 using SQLite;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 namespace GardenCenter.Model;
 
 
-	public class Products()
+	public class Products : INotifyPropertyChanged
 	{
-		[PrimaryKey]
+    private int quantity;
+
+    [PrimaryKey]
 	
 		public string Name { get; set; }
 		public double Price { get; set; }
@@ -12,4 +16,25 @@ namespace GardenCenter.Model;
 		public string Category { get; set; }
 		public string Image { get; set; }
 
-	}
+    //public int Quantity { get; set; }
+    public int Quantity
+    {
+        get => quantity;
+        set
+        {
+            if (quantity != value)
+            {
+                quantity = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+}

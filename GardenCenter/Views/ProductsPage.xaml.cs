@@ -11,26 +11,25 @@ public partial class ProductsPage : ContentPage
     //need parameterless constructor for nevigating
     public ProductsPage()
     {
+        var vm = BindingContext as ProductsViewModel;
         InitializeComponent();
+        //this has been added for adding to basket
+        BindingContext = new ProductsViewModel();
+        Debug.WriteLine($"Command exists: {vm?.AddToBasketCommand != null}");
     }
     public ProductsViewModel ProductsViewModel
     {
         set
         {
             BindingContext = value;
-            // check if products are passed correctly
-            //Debug.WriteLine($"Products count: {value.Products.Count}");
+            Debug.WriteLine($"ViewModel is set: {BindingContext != null}");
         }
     }
-    //public ProductsPage(ProductsViewModel productsViewModel)
-    //{
-    //    InitializeComponent();
-    //    BindingContext = productsViewModel;
-    //    // Check if products are passed correctly
-    //    Debug.WriteLine($"Products count: {productsViewModel.Products.Count}");
-    //}
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
+        Debug.WriteLine($"BindingContext is: {BindingContext?.GetType().Name}");
+
     }
+
 }
