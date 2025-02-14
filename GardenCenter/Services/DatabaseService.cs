@@ -1,3 +1,4 @@
+
 using GardenCenter.Model;
 using SQLite;
 
@@ -14,6 +15,7 @@ public class DatabaseService
         //create table for both user and basket items
         conn.CreateTableAsync<User>().Wait();
         conn.CreateTableAsync<BasketItem>().Wait();
+        conn.CreateTableAsync<Corporate>().Wait();
     }
 
     //User Methods
@@ -56,6 +58,22 @@ public class DatabaseService
     }
 
     public Task<int> UpdateBasketItemAsync(BasketItem item)
+    {
+        return conn.UpdateAsync(item);
+    }
+
+    //Corporate Methods
+    ////////////////////////////////////
+    public Task<List<Corporate>> GetCorporateBasketAsync(string number)
+    {
+        return conn.Table<Corporate>().Where(i => i.PhoneNumber == number).ToListAsync();
+    }
+    public Task<int> AddToCorporateBillAsync(Corporate item)
+    {
+        return conn.InsertAsync(item);
+    }
+
+    public Task<int> UpdateCorporateItemAsync(Corporate item)
     {
         return conn.UpdateAsync(item);
     }

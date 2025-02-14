@@ -35,8 +35,6 @@ public partial class SignUpViewModel : BaseViewModel
         var users = await App.Database.GetUserAsync();
         foreach (var u in users)
         {
-            //print each user
-            //Debug.WriteLine($"Username: {u.Name}, PhoneNumber: {u.PhoneNumber}, Corporate: {u.IsCorporate}");
 
             if (user.PhoneNumber == u.PhoneNumber)
             {

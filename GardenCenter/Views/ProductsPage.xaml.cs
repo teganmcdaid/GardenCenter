@@ -11,11 +11,10 @@ public partial class ProductsPage : ContentPage
     //need parameterless constructor for nevigating
     public ProductsPage()
     {
-        var vm = BindingContext as ProductsViewModel;
         InitializeComponent();
         //this has been added for adding to basket
         BindingContext = new ProductsViewModel();
-        Debug.WriteLine($"Command exists: {vm?.AddToBasketCommand != null}");
+        
     }
     public ProductsViewModel ProductsViewModel
     {

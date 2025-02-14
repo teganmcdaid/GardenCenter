@@ -9,7 +9,7 @@
     Title="GardenCenter">
 
     <ShellContent Shell.NavBarIsVisible="false" Title="Login" ContentTemplate="{DataTemplate views:LoginPage}" Route="LoginPage" />
-    <ShellContent Shell.NavBarIsVisible="false" Title="Home" ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage" />
+    <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage" />
    
     <ShellContent Shell.NavBarIsVisible="false" Title="SignUp" ContentTemplate="{DataTemplate views:SignUp}" Route="SignUp" />
     <!--<ShellContent Title="Products" ContentTemplate="{DataTemplate views:ProductsPage}" Route="ProductsPage" />-->

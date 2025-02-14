@@ -4,7 +4,6 @@ using GardenCenter.Services;
 using GardenCenter.Views;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Windows.Input;
 
 namespace GardenCenter.ViewModels;
 
@@ -24,7 +23,7 @@ public partial class HomePageViewModel: BaseViewModel
     }
     public string currentUserNumber = Preferences.Get("PhoneNumber", "Unknown");
     public string currentUserName = Preferences.Get("Username", "Unknown");
-
+    public bool currentUserCorporate = Preferences.Get("IsCoporate", false);
     //navigating to the prodcut page
     [RelayCommand]
     async Task GoToProducts(List<Products> products)
@@ -115,7 +114,16 @@ public partial class HomePageViewModel: BaseViewModel
             IsBusy = false;
         }
     }
+    //navigating to the login page
+    [RelayCommand]
+    async Task Logout()
+    {
+        // clear stored user 
+        Preferences.Clear();
 
+        // navigate to login page
+        await Shell.Current.GoToAsync($"///LoginPage");
+    }
 }
 
 

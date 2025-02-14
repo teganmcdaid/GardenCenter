@@ -6,7 +6,7 @@ namespace GardenCenter.Model;
 
 	public class Products : INotifyPropertyChanged
 	{
-    private int quantity;
+    
 
     [PrimaryKey]
 	
@@ -17,6 +17,7 @@ namespace GardenCenter.Model;
 		public string Image { get; set; }
 
     //public int Quantity { get; set; }
+    private int quantity;
     public int Quantity
     {
         get => quantity;

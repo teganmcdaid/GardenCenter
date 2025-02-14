@@ -16,6 +16,7 @@ namespace GardenCenter
             Database = new DatabaseService(dbPath);
 
             MainPage = new AppShell();
+
         }
     }
 }

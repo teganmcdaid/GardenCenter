@@ -46,7 +46,6 @@
                                         <!-- bind label so it represents the quantity of the stepper -->
                                         <Label Text ="{Binding Source={x:Reference _stepper}, Path=Value}" 
                                                VerticalOptions="Center"/>
-                                            <!--="{Binding Source={x:Reference _stepper}, Path=Value}" -->
                                     </StackLayout>
 
                                     <!-- button to add the basket-->

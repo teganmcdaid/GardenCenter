@@ -35,29 +35,13 @@ public partial class ProductsViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    async Task CancelAsync()
-    {
-        Debug.WriteLine($"Command exists: canel");
-    }
-
-    //back to Home Page button
-    [RelayCommand]
-    async Task Back()
-    {
-        await Shell.Current.GoToAsync(nameof(HomePage));
-    }
-
-    [RelayCommand]
     async Task AddToBasketAsync(Products product)
     {
         Debug.WriteLine("AddToBasketCommand executed");
         if (product == null)
         {
-            Debug.WriteLine("AddToBasket command executed but procust is null");
             return;
         }
-
-        Debug.WriteLine("AddToBasket command executed");
 
         await BasketViewModel.AddToBasket(product);
         await App.Current.MainPage.DisplayAlert("Success", $"{product.Quantity} {product.Name} added to basket!", "OK");
@@ -68,19 +52,9 @@ public partial class ProductsViewModel : BaseViewModel
     [RelayCommand]
     async Task GoToBasket()
     {
-        //if there is no items return
-        //if (basket is null)
-        //{
-        //    //notify user there are no items in the basket
-        //    await Shell.Current.DisplayAlert("No Items", "Your Basket is Empty.", "OK");
-        //    return;
-        //}
 
         var viewModel = new BasketViewModel(currentUserNumber);
-        //check number of items in basket being passed through
-        //Debug.WriteLine($"Navigating to Basket with {basket.Count} items in basket.");
-
-        //go to basket page and pass through the items
+        
         var navigationParameter = new Dictionary<string, object>
         {
             { "BasketViewModel", viewModel }

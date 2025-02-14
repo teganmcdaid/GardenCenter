@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GardenCenter.Model;
+using System.Diagnostics;
 
 namespace GardenCenter.ViewModels;
 
@@ -11,6 +12,7 @@ public partial class LoginViewModel : BaseViewModel
 
     [ObservableProperty]
     private string phoneNumber;
+
 
     [RelayCommand]
     async Task LoginAsync()
@@ -23,10 +25,12 @@ public partial class LoginViewModel : BaseViewModel
 
 
         //pass the user data to the home page
-        var user = new User { Name = username, PhoneNumber = phoneNumber };
+        var user = new User { Name = username, PhoneNumber = phoneNumber};
 
+        //getlist of users from databae
         var users = await App.Database.GetUserAsync();
 
+        //set default values to false only change when these are true
         bool registeredUser = false;
         bool incorrectName = false;
 
@@ -37,7 +41,11 @@ public partial class LoginViewModel : BaseViewModel
             if (user.PhoneNumber == u.PhoneNumber &&
                 user.Name == u.Name)
             {
+                //set registered user to true if user is found in database
                 registeredUser = true;
+
+                //user is equal to the stored user which has correct corporate status
+                user.IsCorporate = u.IsCorporate;
                 await App.Current.MainPage.DisplayAlert("Success", "You have successfully logged in.", "OK");
 
                 try
